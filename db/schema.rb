@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530211754) do
+ActiveRecord::Schema.define(version: 20170531173349) do
 
-  create_table "drivers", id: false, force: :cascade do |t|
+  create_table "drivers", force: :cascade do |t|
     t.text "medallion"
     t.text "name"
   end
@@ -21,7 +21,8 @@ ActiveRecord::Schema.define(version: 20170530211754) do
     t.integer  "user_id"
     t.integer  "driver_id"
     t.float    "fare"
-    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["driver_id"], name: "index_rides_on_driver_id"
     t.index ["user_id"], name: "index_rides_on_user_id"
   end

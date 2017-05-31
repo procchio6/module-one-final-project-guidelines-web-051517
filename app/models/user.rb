@@ -15,4 +15,9 @@ class User < ActiveRecord::Base
   def self.new_user(username, password)
     User.create!({username: username, password: password})
   end
+
+  def take_ride(taxi, fare)
+    driver = Driver.find_by(medallion: taxi)
+    Ride.create({user: self, driver: driver, fare: fare})
+  end
 end

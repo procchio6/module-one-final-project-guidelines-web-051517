@@ -4,7 +4,7 @@ class CreateRidesTable < ActiveRecord::Migration[5.0]
       t.references :user
       t.references :driver
       t.float :fare
-      t.datetime :date
+      t.timestamps
     end
   end
 end
