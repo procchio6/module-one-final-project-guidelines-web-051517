@@ -18,7 +18,9 @@ class User < ActiveRecord::Base
 
   def take_ride(taxi, fare)
     driver = Driver.find_by(medallion: taxi)
-    Ride.create({user: self, driver: driver, fare: fare})
+    if driver
+      Ride.create!({user: self, driver: driver, fare: fare})
+    end
   end
 
   def last_rides(number_of_rides = 5)
