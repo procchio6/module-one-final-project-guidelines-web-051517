@@ -35,4 +35,9 @@ class User < ActiveRecord::Base
     date_after = Date.today - days
     self.rides.where("rides.created_at > ?", date_after).collect(&:fare).sum
   end
+
+  def list_rides_over_time(days)
+    date_after = Date.today - days
+    self.rides.where("rides.created_at > ?", date_after)
+  end
 end
