@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
     driver = Driver.find_by(medallion: taxi)
     Ride.create({user: self, driver: driver, fare: fare})
   end
+
+  def last_rides(number_of_rides = 5)
+    self.rides.order("rides.created_at DESC").limit(number_of_rides)
+  end
 end
