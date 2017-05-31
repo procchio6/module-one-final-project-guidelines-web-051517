@@ -2,6 +2,5 @@ class Ride < ActiveRecord::Base
   belongs_to :user
   belongs_to :driver
 
-  validates :fare, presence: true
-
+  validates :user_id, :driver_id, :fare, presence: true
 end
