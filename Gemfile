@@ -3,7 +3,7 @@ source "https://rubygems.org"
 
 gem "sinatra-activerecord"
 gem "sqlite3"
-gem "pry"
+gem "pry-byebug"
 gem "require_all"
 gem "rake"
 gem "rspec"
