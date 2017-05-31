@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
       user.password == password ? user : false
     end
   end
+
+  def self.new_user(username, password)
+    User.create!({username: username, password: password})
+  end
 end
