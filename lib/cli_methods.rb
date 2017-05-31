@@ -1,5 +1,15 @@
 def greet
   puts 'Welcome to FairTrakr'
+  puts '
+888                   d8b 
+888                   Y8P 
+888                       
+888888 8888b. 888  888888 
+888        88b Y8bd8P 888 
+888   .d888888  X88K  888 
+Y88b. 888  888.d8  8b.888 
+  Y888 Y888888888  888888'
+                          
   puts 'Press 1 if you are a returning user and 2 to create a new account.'
   gets.chomp
 end
