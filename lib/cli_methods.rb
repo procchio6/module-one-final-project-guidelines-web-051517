@@ -76,6 +76,10 @@ end
 def new_ride(current_user)
   puts "What was your driver's number?"
   taxi = gets.chomp
+  if Driver.find_by(medallion:taxi) == nil
+    puts 'Sorry, that taxi was not found!'
+    user_actions(current_user)
+  end
   puts 'What was your fare?'
   fare = gets.chomp
   current_user.take_ride(taxi, fare)
