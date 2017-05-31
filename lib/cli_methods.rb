@@ -10,7 +10,7 @@ def verify_user
     username = gets.chomp
     puts 'please enter password:'
     password = gets.chomp
-    current_user = User.correct_password(username, password)
+    current_user = User.correct_password?(username, password)
     if current_user == false
       puts "Sorry #{username}, but that is not the correct password"\
     elsif current_user.nil?
