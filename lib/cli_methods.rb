@@ -27,5 +27,19 @@ def create_user
   username = gets.chomp
   puts "please enter password:"
   password = gets.chomp
-  return User.find_or_create(username, password)
+  current_user = User.new_user(username, password)
+  current_user
+end
+
+def log_in
+  case greet
+  when '1'
+    current_user = verify_user
+  when '2'
+    current_user = create_user
+  else
+    puts "Sorry, invalid input"
+    log_in
+  end
+  return current_user
 end
