@@ -1,4 +1,4 @@
-# Fairtrackr
+# FareTrackr™
 
 ## Introduction
 
@@ -13,8 +13,6 @@ This product was created as our first project with Flatiron School and uses a su
 3. If they are creating a new ride, they are prompted for the drivers's medallion number and fare amount.
 4. If they wish to view their ride history, they are prompted for the number of recent rides they would like to view. The results will show their history sorted by newest to oldest rides.
 5. Once completed, a user may logout of their session.
-
-## Requirements
 
 ## Setup/Run
 
