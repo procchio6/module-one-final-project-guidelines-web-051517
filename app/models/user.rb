@@ -26,4 +26,13 @@ class User < ActiveRecord::Base
   def last_rides(number_of_rides = 5)
     self.rides.order("rides.created_at DESC").limit(number_of_rides)
   end
+
+  def cost_of_last_rides(number_of_rides = 5)
+    self.rides.order("rides.created_at DESC").limit(number_of_rides).collect(&:fare).sum
+  end
+
+  def cost_of_rides_over_time(days)
+    date_after = Date.today - days
+    self.rides.where("rides.created_at > ?", date_after).collect(&:fare).sum
+  end
 end
