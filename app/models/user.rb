@@ -4,8 +4,4 @@ class User < ActiveRecord::Base
   has_many :rides
   has_many :drivers, through: :rides
 
-  def initialize(username, password)
-    @username = username
-    @password = password
-  end
 end
