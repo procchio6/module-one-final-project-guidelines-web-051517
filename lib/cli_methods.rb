@@ -13,7 +13,8 @@ def greet
 888        88b Y8bd8P 888
 888   .d888888  X88K  888
 Y88b. 888  888.d8  8b.888
-  Y888 Y888888888  888888'
+  Y888 Y888888888  888888
+  '
   puts 'Welcome to FairTrakr™'
   puts 'Press 1 if you are a returning user,
   2 to create a new account,
@@ -61,7 +62,7 @@ def log_in
     current_user = create_user
   when '3'
     puts 'Goodbye!'
-    exit!
+    exit
   else
     invalid_input
     log_in

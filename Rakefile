@@ -5,3 +5,6 @@ desc 'starts a console'
 task :console do
   Pry.start
 end
+task :run do
+  ruby 'bin/run.rb'
+end
