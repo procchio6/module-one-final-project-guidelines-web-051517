@@ -5,7 +5,6 @@ def invalid_input
 end
 
 def greet
-  puts 'Welcome to FairTrakr™'
   puts '
 888                   d8b
 888                   Y8P
@@ -15,7 +14,7 @@ def greet
 888   .d888888  X88K  888
 Y88b. 888  888.d8  8b.888
   Y888 Y888888888  888888'
-
+  puts 'Welcome to FairTrakr™'
   puts 'Press 1 if you are a returning user,
   2 to create a new account,
   and 3 to exit'
