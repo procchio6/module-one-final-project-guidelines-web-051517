@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
     end
     puts "DAY        RIDES"
     rides_hash.keys.each do |k|
-      puts "%10s %3d %s\n" % [k, rides_hash[k], "#" * (rides_hash[k] * 5)]
+      puts "%10s %3d %s\n" % [k, rides_hash[k], "🚕  ".yellow * rides_hash[k]]
     end
   end
 
@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
     end
     puts "    DAY      COST"
     cost_hash.keys.each do |k|
-      puts "%10s %6s %s\n" % [k, sprintf("$%.2f", cost_hash[k]), "#" * (cost_hash[k])]
+      puts "%10s %6s %s\n" % [k, sprintf("$%.2f", cost_hash[k]), "💰" * (cost_hash[k] / 2)]
     end
   end
 

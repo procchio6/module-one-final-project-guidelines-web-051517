@@ -8,10 +8,10 @@ def greet
   a = Artii::Base.new :font => 'slant'
   puts a.asciify('FareTrakr').colorize(:yellow)
 
-  puts 'Please press:
-  1 if you are a returning user,
-  2 to create a new account,
-  3 to exit'
+  puts "Please press:
+  #{"1 if you are a returning user".green}
+  #{"2 to create a new account".yellow}
+  #{"3 to exit".red}"
   gets.chomp
 end
 
@@ -162,14 +162,14 @@ end
 def user_actions(current_user)
   while true
     puts "Please press:
-  #{"1 to take a ride".green}
+  #{"1 to take a ride".green} 🚕
   #{"2 to log out".red}
-  3 to view recent rides
+  3 to view recent rides 🚕
   4 to delete last ride
   5 to view rides over time
-  6 to view graph of rides over time
-  7 to view total cost over time
-  8 to view graph of approximate cost over time"
+  6 to view graph of rides over time 📊
+  7 to view total cost over time 💰
+  8 to view graph of approximate cost over time 📊"
     case gets.chomp
     when '1'
       new_ride(current_user)
