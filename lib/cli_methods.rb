@@ -30,6 +30,7 @@ def verify_user
       run
     elsif current_user != false && !current_user.nil?
       a = Artii::Base.new
+      puts "\e[H\e[2J"
       puts a.asciify("Welcome #{current_user.username.capitalize}").green
       return current_user
     end
@@ -57,6 +58,7 @@ def log_in
   when '2'
     current_user = create_user
   when '3'
+    puts "\e[H\e[2J"
     puts 'Goodbye!'
     exit
   else
@@ -162,15 +164,17 @@ end
 def user_actions(current_user)
   while true
     puts "Please press:
-  #{"1 to take a ride".green} 🚕
-  #{"2 to log out".red}
-  3 to view recent rides 🚕
-  4 to delete last ride
-  5 to view rides over time
-  6 to view graph of rides over time 📊
-  7 to view total cost over time 💰
-  8 to view graph of approximate cost over time 📊"
-    case gets.chomp
+  🚕 #{"1 to take a ride".green}
+  🚪 #{"2 to log out".red}
+  🚕 3 to view recent rides
+  #{"🔙 ".colorize(:background => :white)}4 to delete last ride
+  🚕 5 to view rides over time
+  📊 6 to view graph of rides over time
+  💰 7 to view total cost over time
+  📊 8 to view graph of approximate cost over time"
+    input = gets.chomp
+    puts "\e[H\e[2J"
+    case input
     when '1'
       new_ride(current_user)
     when '2'
