@@ -147,8 +147,13 @@ def delete_last_ride(current_user)
   choice = gets.chomp
   case choice
   when '1'
-    current_user.rides.last.destroy
-    puts "The last ride has been deleted!".red
+    last_ride = current_user.rides.last
+    if !last_ride.nil?
+      last_ride.destroy
+      puts "The last ride has been deleted!".red
+    else
+      puts "You have no rides to delete!"
+    end
   else
     puts "Nothing has been deleted."
   end
