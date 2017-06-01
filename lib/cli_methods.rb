@@ -87,8 +87,7 @@ end
 def ride_iterator(lastrides)
   puts "You have no rides!" if lastrides.empty?
   lastrides.each do |ride|
-    date = "#{ride.created_at.strf
-    time("%B")} #{ride.created_at.strftime("%d")}"
+    date = "#{ride.created_at.strftime("%B")} #{ride.created_at.strftime("%d")}"
     puts "On #{date}, you rode in taxi number #{ride.driver.medallion} being driven by #{ride.driver.name}. It cost $#{sprintf("%.2f",ride.fare)}"
   end
 end

@@ -53,9 +53,9 @@ class User < ActiveRecord::Base
         rides_hash[date.to_s] = hash_input
       end
     end
-    puts "DAY          RIDES"
+    puts "DAY        RIDES"
     rides_hash.keys.each do |k|
-      puts "%3s %5d %s\n" % [k, rides_hash[k], "#" * (rides_hash[k] * 10)]
+      puts "%10s %3d %s\n" % [k, rides_hash[k], "#" * (rides_hash[k] * 5)]
     end
   end
 
@@ -71,9 +71,9 @@ class User < ActiveRecord::Base
         cost_hash[date.to_s] = hash_input
       end
     end
-    puts "     DAY    COST"
+    puts "    DAY      COST"
     cost_hash.keys.each do |k|
-      puts "%10s %5s %s\n" % [k, sprintf("%.2f", cost_hash[k]), "#" * (cost_hash[k])]
+      puts "%10s %6s %s\n" % [k, sprintf("$%.2f", cost_hash[k]), "#" * (cost_hash[k])]
     end
   end
 
