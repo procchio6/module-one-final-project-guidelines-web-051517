@@ -5,17 +5,9 @@ def invalid_input
 end
 
 def greet
-  puts '
-888                   d8b
-888                   Y8P
-888
-888888 8888b. 888  888888
-888        88b Y8bd8P 888
-888   .d888888  X88K  888
-Y88b. 888  888.d8  8b.888
-  Y888 Y888888888  888888
-  '
-  puts 'Welcome to FareTrakr™'
+  a = Artii::Base.new :font => 'slant'
+  puts a.asciify('FareTrakr').colorize(:yellow)
+
   puts 'Please press:
   1 if you are a returning user,
   2 to create a new account,
@@ -37,7 +29,8 @@ def verify_user
       puts "Sorry, but #{username} is not a current user"
       run
     elsif current_user != false && !current_user.nil?
-      puts "Welcome back #{current_user.username}"
+      a = Artii::Base.new
+      puts a.asciify("Welcome #{current_user.username.capitalize}").green
       return current_user
     end
   # end
@@ -108,13 +101,13 @@ def cost_over_time(current_user)
   input = gets.chomp
   case input
   when '1'
-    puts "$#{current_user.cost_of_rides_over_time(0)}"
+    puts "$#{sprintf("%.2f", current_user.cost_of_rides_over_time(0))}"
   when '2'
-    puts "$#{current_user.cost_of_rides_over_time(7)}"
+    puts "$#{sprintf("%.2f", current_user.cost_of_rides_over_time(7))}"
   when '3'
-    puts "$#{current_user.cost_of_rides_over_time(30)}"
+    puts "$#{sprintf("%.2f", current_user.cost_of_rides_over_time(30))}"
   when '4'
-    puts "$#{current_user.cost_of_rides_over_time(10000000)}"
+    puts "$#{sprintf("%.2f", current_user.cost_of_rides_over_time(10000000))}"
   else
     invalid_input
   end
@@ -145,14 +138,32 @@ def rides_over_time(current_user)
   end
 end
 
+def delete_last_ride(current_user)
+  puts "Are you sure?
+  #{"THIS WILL BE PERMANENT!".red}
+  Press:
+    #{"1 for yes".red}
+    #{"2 for no".green}"
+  choice = gets.chomp
+  case choice
+  when '1'
+    current_user.rides.last.destroy
+    puts "The last ride has been deleted!".red
+  else
+    puts "Nothing has been deleted."
+  end
+end
+
 def user_actions(current_user)
   while true
-    puts 'Please press:
-  1 to take a ride
-  2 to log out
+    puts "Please press:
+  #{"1 to take a ride".green}
+  #{"2 to log out".red}
   3 to view recent rides
-  4 to view rides over time
-  5 to view total taxi costs over time'
+  4 to delete last ride
+  5 to view rides over time
+  6 to view graph of rides over time
+  7 to view total taxi costs over time"
     case gets.chomp
     when '1'
       new_ride(current_user)
@@ -161,8 +172,12 @@ def user_actions(current_user)
     when '3'
       view_num_rides(current_user)
     when '4'
-      rides_over_time(current_user)
+      delete_last_ride(current_user)
     when '5'
+      rides_over_time(current_user)
+    when '6'
+      current_user.rides_last_30days_count
+    when '7'
       cost_over_time(current_user)
     else
       invalid_input

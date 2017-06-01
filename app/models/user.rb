@@ -38,6 +38,25 @@ class User < ActiveRecord::Base
 
   def list_rides_over_time(days)
     date_after = Date.today - days
-    self.rides.where("rides.created_at > ?", date_after)
+    self.rides.where("rides.created_at > ?", date_after).order("rides.created_at DESC")
   end
+
+  def rides_last_30days_count
+    date_after = Date.today - 30
+    rides_hash = {}
+    (date_after..Date.today).each do |date|
+      hash_input = self.rides.group("date(created_at)").where("date(created_at) = ?", date).count.values.first
+      case hash_input
+      when nil
+        rides_hash[date.to_s] = 0
+      else
+        rides_hash[date.to_s] = hash_input
+      end
+    end
+    puts "DAY          RIDES"
+    rides_hash.keys.each do |k|
+      puts "%3s %5d %s\n" % [k, rides_hash[k], "#" * (rides_hash[k] * 10)]
+    end
+  end
+
 end
