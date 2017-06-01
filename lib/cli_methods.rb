@@ -162,7 +162,8 @@ def user_actions(current_user)
   3 to view recent rides
   4 to delete last ride
   5 to view rides over time
-  6 to view total taxi costs over time"
+  6 to view graph of rides over time
+  7 to view total taxi costs over time"
     case gets.chomp
     when '1'
       new_ride(current_user)
@@ -175,6 +176,8 @@ def user_actions(current_user)
     when '5'
       rides_over_time(current_user)
     when '6'
+      current_user.rides_last_30days_count
+    when '7'
       cost_over_time(current_user)
     else
       invalid_input
