@@ -68,12 +68,12 @@ class User < ActiveRecord::Base
       when nil
         cost_hash[date.to_s] = 0
       else
-        cost_hash[date.to_s] = hash_input.round
+        cost_hash[date.to_s] = hash_input
       end
     end
-    puts "DAY     APPROXIMATE COST"
+    puts "     DAY    COST"
     cost_hash.keys.each do |k|
-      puts "%3s %5d %s\n" % [k, cost_hash[k], "#" * (cost_hash[k])]
+      puts "%10s %5s %s\n" % [k, sprintf("%.2f", cost_hash[k]), "#" * (cost_hash[k])]
     end
   end
 
