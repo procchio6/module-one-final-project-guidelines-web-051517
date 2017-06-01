@@ -59,4 +59,22 @@ class User < ActiveRecord::Base
     end
   end
 
+  def rides_last_30days_cost
+    date_after = Date.today - 30
+    cost_hash = {}
+    (date_after..Date.today).each do |date|
+      hash_input = self.rides.group("date(created_at)").where("date(created_at) = ?", date).sum("fare").values.first
+      case hash_input
+      when nil
+        cost_hash[date.to_s] = 0
+      else
+        cost_hash[date.to_s] = hash_input.round
+      end
+    end
+    puts "DAY     APPROXIMATE COST"
+    cost_hash.keys.each do |k|
+      puts "%3s %5d %s\n" % [k, cost_hash[k], "#" * (cost_hash[k])]
+    end
+  end
+
 end
