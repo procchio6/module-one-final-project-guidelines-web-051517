@@ -5,17 +5,9 @@ def invalid_input
 end
 
 def greet
-  puts '
-888                   d8b
-888                   Y8P
-888
-888888 8888b. 888  888888
-888        88b Y8bd8P 888
-888   .d888888  X88K  888
-Y88b. 888  888.d8  8b.888
-  Y888 Y888888888  888888
-  '
-  puts 'Welcome to FareTrakr™'
+  a = Artii::Base.new :font => 'slant'
+  puts a.asciify('FareTrakr').colorize(:yellow)
+
   puts 'Please press:
   1 if you are a returning user,
   2 to create a new account,
@@ -108,13 +100,13 @@ def cost_over_time(current_user)
   input = gets.chomp
   case input
   when '1'
-    puts "$#{current_user.cost_of_rides_over_time(0)}"
+    puts "$#{sprintf("%.2f", current_user.cost_of_rides_over_time(0))}"
   when '2'
-    puts "$#{current_user.cost_of_rides_over_time(7)}"
+    puts "$#{sprintf("%.2f", current_user.cost_of_rides_over_time(7))}"
   when '3'
-    puts "$#{current_user.cost_of_rides_over_time(30)}"
+    puts "$#{sprintf("%.2f", current_user.cost_of_rides_over_time(30))}"
   when '4'
-    puts "$#{current_user.cost_of_rides_over_time(10000000)}"
+    puts "$#{sprintf("%.2f", current_user.cost_of_rides_over_time(10000000))}"
   else
     invalid_input
   end

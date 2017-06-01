@@ -38,6 +38,6 @@ class User < ActiveRecord::Base
 
   def list_rides_over_time(days)
     date_after = Date.today - days
-    self.rides.where("rides.created_at > ?", date_after)
+    self.rides.where("rides.created_at > ?", date_after).order("rides.created_at DESC")
   end
 end
