@@ -164,14 +164,14 @@ end
 def user_actions(current_user)
   while true
     puts "Please press:
-  🚕 #{"1 to take a ride".green}
-  🚪 #{"2 to log out".red}
-  🚕 3 to view recent rides
-  #{"🔙 ".colorize(:background => :white)}4 to delete last ride
-  🚕 5 to view rides over time
-  📊 6 to view graph of rides over time
-  💰 7 to view total cost over time
-  📊 8 to view graph of approximate cost over time"
+  🚕  #{"1 to take a ride".green}
+  🚪  #{"2 to log out".red}
+  🚕  3 to view recent rides
+  #{"🔙 ".colorize(:background => :white)} 4 to delete last ride
+  🚕  5 to view rides over time
+  📊  6 to view graph of rides over time
+  💰  7 to view total cost over time
+  📊  8 to view graph of approximate cost over time"
     input = gets.chomp
     puts "\e[H\e[2J"
     case input
