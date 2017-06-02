@@ -75,9 +75,20 @@ def new_ride(current_user)
     puts 'Sorry, that taxi was not found!'
     user_actions(current_user)
   end
-  puts 'What was your fare?'
-  fare = gets.chomp
+  fare = get_fare
   current_user.take_ride(taxi, fare)
+end
+
+def get_fare
+  puts 'What was your fare?'
+  input = gets.chomp
+  input = input.gsub('$', '').to_f.round(2)
+  if input == 0.0 || input > 999
+    puts "Invalid input! Please try again."
+    get_fare
+  else
+    input
+  end
 end
 
 def view_num_rides(current_user)

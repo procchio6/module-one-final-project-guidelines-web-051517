@@ -73,7 +73,11 @@ class User < ActiveRecord::Base
     end
     puts "    DAY      COST"
     cost_hash.keys.each do |k|
-      puts "%10s %6s %s\n" % [k, sprintf("$%.2f", cost_hash[k]), "💰" * (cost_hash[k] / 2)]
+      cost = cost_hash[k] / 3
+      if cost > 50
+        cost = 50
+      end
+      puts "%10s %7s %s\n" % [k, sprintf("$%.2f", cost_hash[k]), "💰" * cost]
     end
   end
 
